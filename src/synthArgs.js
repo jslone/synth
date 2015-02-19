@@ -81,5 +81,5 @@ var adsr = {
 
 module.exports = {
 	adsr: adsr,
-	fm: fm2
+	modulators: fm2
 }

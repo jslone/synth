@@ -3,7 +3,7 @@ var synth = require('synth.js')(new (window.AudioContext || window.webkitAudioCo
 var synthArgs = require('synthArgs.js');
 
 // my second degree fm synth
-var keyboard = new synth(synthArgs.fm, synthArgs.adsr);
+var keyboard = new synth(synthArgs.modulators, synthArgs.adsr);
 
 // my dvorak key
 var keys = {
