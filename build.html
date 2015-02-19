@@ -526,53 +526,63 @@ module.exports = function(context) {
 
     return adrs;
 }},
-'/Users/jslone/Documents/16465/synth/src/main.js' : function(module) {
-var mainloop = require('sald:mainloop.js');
-var synth = require('/Users/jslone/Documents/16465/synth/src/synth.js')(new (window.AudioContext || window.webkitAudioContext)());
-
-// my second degree fm synth
-var keyboard = new synth(
-{	
-	/*'spaceinvaders' : {
+'/Users/jslone/Documents/16465/synth/src/synthArgs.js' : function(module) {
+var spaceinvaders = {
+	'spaceinvaders' : {
 		type: 'sine',
 		freq: 10,
 		gain: 100,
 		output: [
 			'synth'
 		]
-	}*/
-	/*'metroid' : {
+	}
+}
+
+var metroid = {
+	'metroid' : {
 		type: 'sine',
 		freq: 440,
 		gain: 100,
 		output: [
 			'synth'
 		]
-	}*/
-	/*'smbcastle' : {
+	}
+}
+
+var smbcastle = {
+	'smbcastle' : {
 		type: 'sine',
 		freq: 110,
 		gain: 100,
 		output: [
 			'synth'
 		]
-	}*/
-	/*'flute' : {
+	}
+}
+
+var flute = {
+	'flute' : {
 		type: 'sine',
 		freq: 1760,
 		gain: 100,
 		output: [
 			'synth'
 		]
-	}*/
-	/*'spooky' : {
+	}
+}
+
+var spooky = {
+	'spooky' : {
 		type: 'sine',
 		freq: 5,
 		gain: 20,
 		output: [
 			'synth'
 		]
-	}*/
+	}
+}
+
+var fm2 = {
 	'fm2' : {
 		type: 'sine',
 		freq: 880,
@@ -589,13 +599,26 @@ var keyboard = new synth(
 			'synth'
 		]
 	}
-},
-{
+}
+
+var adsr = {
 	attack: 0.01,
 	decay: 0,
 	sustain: 1,
 	release: 0.01
-});
+}
+
+module.exports = {
+	adsr: adsr,
+	fm: fm2
+}},
+'/Users/jslone/Documents/16465/synth/src/main.js' : function(module) {
+var mainloop = require('sald:mainloop.js');
+var synth = require('/Users/jslone/Documents/16465/synth/src/synth.js')(new (window.AudioContext || window.webkitAudioContext)());
+var synthArgs = require('/Users/jslone/Documents/16465/synth/src/synthArgs.js');
+
+// my second degree fm synth
+var keyboard = new synth(synthArgs.fm, synthArgs.adsr);
 
 // my dvorak key
 var keys = {

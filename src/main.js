@@ -1,72 +1,9 @@
 var mainloop = require('sald:mainloop.js');
 var synth = require('synth.js')(new (window.AudioContext || window.webkitAudioContext)());
+var synthArgs = require('synthArgs.js');
 
 // my second degree fm synth
-var keyboard = new synth(
-{	
-	/*'spaceinvaders' : {
-		type: 'sine',
-		freq: 10,
-		gain: 100,
-		output: [
-			'synth'
-		]
-	}*/
-	/*'metroid' : {
-		type: 'sine',
-		freq: 440,
-		gain: 100,
-		output: [
-			'synth'
-		]
-	}*/
-	/*'smbcastle' : {
-		type: 'sine',
-		freq: 110,
-		gain: 100,
-		output: [
-			'synth'
-		]
-	}*/
-	/*'flute' : {
-		type: 'sine',
-		freq: 1760,
-		gain: 100,
-		output: [
-			'synth'
-		]
-	}*/
-	/*'spooky' : {
-		type: 'sine',
-		freq: 5,
-		gain: 20,
-		output: [
-			'synth'
-		]
-	}*/
-	'fm2' : {
-		type: 'sine',
-		freq: 880,
-		gain: 100,
-		output: [
-			'fm1'
-		]
-	},
-	'fm1' : {
-		type: 'sine',
-		freq: 440,
-		gain: 100,
-		output: [
-			'synth'
-		]
-	}
-},
-{
-	attack: 0.01,
-	decay: 0,
-	sustain: 1,
-	release: 0.01
-});
+var keyboard = new synth(synthArgs.fm, synthArgs.adsr);
 
 // my dvorak key
 var keys = {
